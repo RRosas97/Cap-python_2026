@@ -3,7 +3,7 @@ name = "file-management"
 version = "0.1.0"
 description = ""
 authors = [
-    {name = "Richier9",email = "ricardorosas32@aragon.unam.mx"}
+    {name = "RRosas97",email = "ricardo.rosas@axity.com"}
 ]
 readme = "README.md"
 requires-python = ">=3.12"
