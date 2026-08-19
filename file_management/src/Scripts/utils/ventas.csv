@@ -1,0 +1,13 @@
+producto,categoria,precio,cantidad,fecha
+Café,Bebidas,45.0,3,2026-08-01
+Té,Bebidas,30.0,5,2026-08-01
+Croissant,Panadería,28.5,4,2026-08-02
+Café,Bebidas,45.0,2,2026-08-02
+Pan integral,Panadería,35.0,6,2026-08-03
+Jugo de naranja,Bebidas,25.0,8,2026-08-03
+Muffin,Panadería,32.0,3,2026-08-04
+Café,Bebidas,45.0,5,2026-08-04
+Bagel,Panadería,27.0,2,2026-08-05
+Té,Bebidas,30.0,4,2026-08-05
+Dona,Panadería,22.0,7,2026-08-06
+Chocolate caliente,Bebidas,40.0,3,2026-08-06

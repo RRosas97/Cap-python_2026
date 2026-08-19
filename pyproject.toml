@@ -1,0 +1,34 @@
+[project]
+name = "first-module"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Richier9",email = "ricardorosas32@aragon.unam.mx"}
+]
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "attrs (>=26.1.0,<27.0.0)",
+    "pydantic (>=2.13.4,<3.0.0)",
+    "pyyaml (>=6.0.3,<7.0.0)"
+]
+
+[tool.poetry]
+packages = [{include = "first_module", from = "src"}]
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[dependency-groups]
+dev = [
+    "black (>=26.5.1,<27.0.0)",
+    "ruff (>=0.16.2,<0.17.0)",
+    "pre-commit (>=4.6.2,<5.0.0)"
+]
+
+[tool.black]
+line-length = 88
+
+[tool.ruff.lint]
+select = ["E","F","I"]

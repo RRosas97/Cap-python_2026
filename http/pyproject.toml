@@ -1,0 +1,23 @@
+[project]
+name = "http"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Richier9",email = "ricardorosas32@aragon.unam.mx"}
+]
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "requests (>=2.34.2,<3.0.0)",
+    "asyncio (>=4.0.0,<5.0.0)",
+    "aiohttp (>=3.14.3,<4.0.0)",
+    "httpx (>=0.28.1,<0.29.0)",
+    "httpx-retries (>=0.6.0,<0.7.0)"
+]
+
+[tool.poetry]
+packages = [{include = "http", from = "src"}]
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"

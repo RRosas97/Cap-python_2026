@@ -1,0 +1,81 @@
+import csv
+import json
+
+import yaml
+
+#leer un csv-reader(lista)
+with open("datos.csv", "r", encoding="utf-8", newline="") as archivo:
+    reader = csv.reader(archivo)
+    encabezado = next(reader)  # la primera fila, normalmente los nombres de columna
+    for fila in reader:
+        print(fila)  # ['Ana', '30', 'CDMX'], ['Luis', '25', 'Monterrey']
+
+#Leer un csv-DictReader(diccionario)
+with open("datos.csv", "r", encoding="utf-8", newline="") as archivo:
+    lector = csv.DictReader(archivo)
+    for fila in lector:
+        print(fila)  # {'nombre': 'Ana', 'edad': '30', 'ciudad': 'CDMX'}
+        print(fila["nombre"])  # Ana
+
+#Escribir csv(lista)
+with open("salida.csv", "w", encoding="utf-8", newline="") as archivo:
+    escritor = csv.writer(archivo)
+    escritor.writerow(["nombre", "edad", "ciudad"])  # encabezado
+    escritor.writerow(["Ana", 30, "CDMX"])
+    escritor.writerow(["Luis", 25, "Monterrey"])
+
+#Escribir csv-DictWriter(diccionarios)
+datos = [
+    {"nombre": "Ana", "edad": 30, "ciudad": "CDMX"},
+    {"nombre": "Luis", "edad": 25, "ciudad": "Monterrey"},
+]
+
+with open("salida.csv", "w", encoding="utf-8", newline="") as archivo:
+    campos = ["nombre", "edad", "ciudad"]
+    escritor = csv.DictWriter(archivo, fieldnames=campos)
+    escritor.writeheader()  # escribe la fila de encabezado automáticamente
+    escritor.writerows(datos)  # escribe todas las filas de una vez
+
+# dump / load -> con ARCHIVOS
+with open("datos.json", "r", encoding="utf-8") as archiver:
+        data = json.load(archiver)
+
+with open("datos.json", "w") as archivo:
+    json.dump({"nombre": "Ana"}, archivo)
+
+
+# dumps / loads -> con STRINGS (por ejemplo, si el JSON viene de una respuesta de API, no de un archivo)
+texto = json.dumps({"nombre": "Ana"})
+print(texto)          # '{"nombre": "Ana"}'
+print(type(texto))    # <class 'str'>
+
+datos = json.loads(texto)
+print(datos)           # {'nombre': 'Ana'}
+print(type(datos))     # <class 'dict'>
+
+#manejo de errores json
+try:
+    json.loads("{esto no es json valido}")
+except json.JSONDecodeError as error:
+    print(f"Error en línea {error.lineno}, columna {error.colno}: {error.msg}")
+
+#Leer YAML
+with open("config.yaml", "r", encoding="utf-8") as archivo:
+    data = yaml.safe_load(archivo)
+
+print(data)
+
+#Escribir YAML
+datos = {"nombre": "Ana", "edad": 30, "ciudades": ["CDMX", "Monterrey"]}
+
+with open("salida.yaml", "w", encoding="utf-8") as archivo:
+    yaml.dump(datos, archivo, allow_unicode=True, sort_keys=False)
+
+#Manejo de errores
+try:
+    with open("config.yaml", "r", encoding="utf-8") as archivo:
+        data = yaml.safe_load(archivo)
+except FileNotFoundError:
+    print("El archivo no existe")
+except yaml.YAMLError as error:
+    print(f"YAML mal formado: {error}")

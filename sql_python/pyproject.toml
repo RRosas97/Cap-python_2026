@@ -1,0 +1,23 @@
+[project]
+name = "sql-python"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Richier9",email = "ricardorosas32@aragon.unam.mx"}
+]
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "sqlalchemy (>=2.0.52,<3.0.0)",
+    "pyodbc (>=5.3.0,<6.0.0)",
+    "pandas (>=3.0.5,<4.0.0)",
+    "tabulate (>=0.10.0,<0.11.0)",
+    "alembic (>=1.19.1,<2.0.0)"
+]
+
+[tool.poetry]
+packages = [{include = "sql_python", from = "src"}]
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
