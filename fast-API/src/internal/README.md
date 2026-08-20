@@ -1,0 +1,1 @@
+Contiene endpoints internos no públicos

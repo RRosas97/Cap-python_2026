@@ -1,0 +1,1 @@
+Almacena la lógica de negocio para cada api route

@@ -1,0 +1,1 @@
+Guarda configuraciones generales y de seguridad

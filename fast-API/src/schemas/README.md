@@ -1,0 +1,1 @@
+Carpeta para crear los modelos pydantic
