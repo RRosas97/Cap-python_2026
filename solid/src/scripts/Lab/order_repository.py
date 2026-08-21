@@ -1,0 +1,16 @@
+from typing import Protocol
+
+from src.scripts.Lab.models.order import Order
+
+
+class OrderRepository(Protocol):
+
+    def add(self, order: Order) -> Order: ...
+
+    def get(self, order_id: int) -> Order | None: ...
+
+    def list_by_user(self, user_id: int) -> list[Order]: ...
+
+    def update_status(self, order_id: int, status: str) -> Order | None: ...
+
+    def delete(self, order_id: int) -> bool: ...
