@@ -1,0 +1,38 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Instalar Poetry
+        run: pip install poetry
+
+      - name: Instalar dependencias
+        run: poetry install --no-interaction
+
+      - name: Lint (Ruff)
+        run: poetry run ruff check .
+
+      - name: Type-check (mypy)
+        run: poetry run mypy src/lab/fast_API/src
+
+      - name: Tests (pytest)
+        run: poetry run pytest tests/ -v
+
+      - name: Build
+        run: poetry build
